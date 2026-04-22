@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api.v1 import health, auth
+from app.api.v1 import health, auth, transactions, portfolio, goals, ai
 from app.core.config import settings
 from app.core.logger import logger
 
@@ -21,6 +21,10 @@ app.add_middleware(
 # Include routers
 app.include_router(health.router, prefix=settings.API_V1_STR, tags=["health"])
 app.include_router(auth.router, prefix=settings.API_V1_STR, tags=["auth"])
+app.include_router(transactions.router, prefix=f"{settings.API_V1_STR}/transactions", tags=["transactions"])
+app.include_router(portfolio.router, prefix=f"{settings.API_V1_STR}/portfolio", tags=["portfolio"])
+app.include_router(goals.router, prefix=f"{settings.API_V1_STR}/goals", tags=["goals"])
+app.include_router(ai.router, prefix=f"{settings.API_V1_STR}/ai", tags=["ai"])
 
 @app.on_event("startup")
 async def startup_event():

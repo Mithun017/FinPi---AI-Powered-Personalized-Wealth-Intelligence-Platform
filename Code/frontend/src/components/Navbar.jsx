@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, Wallet, Brain, Target, Settings, LogOut } from 'lucide-react';
 import useAuthStore from '../stores/authStore';
 
@@ -6,11 +7,11 @@ const Navbar = () => {
     const { logout } = useAuthStore();
 
     const navItems = [
-        { icon: <LayoutDashboard size={20} />, label: 'Dashboard' },
-        { icon: <Wallet size={20} />, label: 'Portfolio' },
-        { icon: <Brain size={20} />, label: 'AI CFO' },
-        { icon: <Target size={20} />, label: 'Goals' },
-        { icon: <Settings size={20} />, label: 'Settings' },
+        { icon: <LayoutDashboard size={20} />, label: 'Dashboard', path: '/' },
+        { icon: <Wallet size={20} />, label: 'Portfolio', path: '/portfolio' },
+        { icon: <Brain size={20} />, label: 'AI CFO', path: '/ai-chat' },
+        { icon: <Target size={20} />, label: 'Goals', path: '/goals' },
+        { icon: <Settings size={20} />, label: 'Settings', path: '/settings' },
     ];
 
     return (
@@ -23,24 +24,28 @@ const Navbar = () => {
 
             <div className="flex-1 flex flex-col gap-8">
                 {navItems.map((item, index) => (
-                    <button 
+                    <NavLink 
                         key={index}
-                        className="p-3 text-slate-400 hover-indigo rounded-xl smooth-transition group relative"
-                        style={{ border: 'none', cursor: 'pointer' }}
+                        to={item.path}
+                        className={({ isActive }) => 
+                            `p-3 rounded-xl smooth-transition group relative ${isActive ? 'bg-indigo-500/20 text-indigo-400' : 'text-slate-400 hover-indigo'}`
+                        }
                         title={item.label}
                     >
                         {item.icon}
-                        <span className="absolute left-16 px-2 py-1 rounded text-xs opacity-0 pointer-events-none" style={{ backgroundColor: 'var(--bg-dark)', color: 'white', border: '1px solid var(--glass-border)' }}>
+                        <span className="absolute left-16 px-2 py-1 rounded text-xs opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity" style={{ backgroundColor: 'var(--bg-dark)', color: 'white', border: '1px solid var(--glass-border)', whiteSpace: 'nowrap' }}>
                             {item.label}
                         </span>
-                    </button>
+                    </NavLink>
                 ))}
             </div>
 
             <button 
                 onClick={logout}
                 className="p-3 text-slate-400 rounded-xl smooth-transition"
-                style={{ border: 'none', cursor: 'pointer', color: '#fb7185' }}
+                style={{ border: 'none', cursor: 'pointer', background: 'transparent' }}
+                onMouseEnter={(e) => e.target.style.color = '#fb7185'}
+                onMouseLeave={(e) => e.target.style.color = '#94a3b8'}
                 title="Logout"
             >
                 <LogOut size={20} />
