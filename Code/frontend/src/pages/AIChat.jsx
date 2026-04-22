@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Brain, User, Sparkles } from 'lucide-react';
+import api from '../services/api';
+import { ENDPOINTS } from '../constants/endpoints';
+import toast from 'react-hot-toast';
 
 const AIChat = () => {
     const [messages, setMessages] = useState([
@@ -24,16 +27,22 @@ const AIChat = () => {
         setInput('');
         setIsTyping(true);
 
-        // Simulate AI Response
-        setTimeout(() => {
-            const aiMsg = { 
-                id: Date.now() + 1, 
-                text: "Based on your recent transactions, you have a surplus of $1,200 this month. I recommend allocating 50% to your 'Emergency Fund' and 50% to your 'S&P 500 Index' investment to stay on track for your long-term goals.", 
-                sender: 'ai' 
-            };
-            setMessages(prev => [...prev, aiMsg]);
+        try {
+            const response = await api.post(ENDPOINTS.AI.CHAT, { query: input });
+            if (response.success) {
+                const aiMsg = { 
+                    id: Date.now() + 1, 
+                    text: response.data.data.response, 
+                    sender: 'ai' 
+                };
+                setMessages(prev => [...prev, aiMsg]);
+            }
+        } catch (error) {
+            toast.error("AI Brain is currently offline.");
+            console.error(error);
+        } finally {
             setIsTyping(false);
-        }, 1500);
+        }
     };
 
     return (

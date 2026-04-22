@@ -44,4 +44,41 @@ class AIFinancialBrain:
         except Exception as e:
             return f"Error connecting to AI brain: {str(e)}"
 
+    def calculate_wealth_personality(self, profile_data: Dict[str, Any]) -> str:
+        """
+        Determines the user's financial personality.
+        """
+        risk_score = profile_data.get('risk_score', 50)
+        if risk_score > 70:
+            return "Aggressive"
+        elif risk_score > 30:
+            return "Balanced"
+        else:
+            return "Conservative"
+
+    def generate_smart_alerts(self, financial_data: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """
+        Generates contextual alerts based on spending and goals.
+        """
+        alerts = []
+        # High spending detection
+        if financial_data.get('monthly_spending', 0) > financial_data.get('monthly_budget', 1000) * 1.2:
+            alerts.append({
+                "type": "high_spending",
+                "title": "High Spending Alert",
+                "message": "You've exceeded your typical monthly budget by 20%.",
+                "risk_level": "medium"
+            })
+        
+        # Goal warning
+        if financial_data.get('days_to_deadline', 100) < 30 and financial_data.get('goal_progress', 100) < 80:
+            alerts.append({
+                "type": "goal_warning",
+                "title": "Goal at Risk",
+                "message": "Your 'New Car' goal deadline is approaching, but you're only at 60% completion.",
+                "risk_level": "high"
+            })
+            
+        return alerts
+
 ai_brain = AIFinancialBrain()

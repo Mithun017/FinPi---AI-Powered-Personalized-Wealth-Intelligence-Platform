@@ -34,6 +34,43 @@ const Portfolio = () => {
                 </div>
             </div>
 
+            <div className="glass-card p-6 mb-8 border-indigo-500/30 bg-indigo-500/5">
+                <div className="flex justify-between items-center mb-6">
+                    <h3 className="text-xl font-bold flex items-center gap-2">
+                        <Brain size={20} className="text-indigo-400" />
+                        AI Rebalancing Suggestions
+                    </h3>
+                    <span className="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full border border-indigo-500/30">
+                        94% Confidence
+                    </span>
+                </div>
+                <div className="flex gap-6 items-center">
+                    <div className="flex-1">
+                        <p className="text-sm text-slate-300 mb-4">
+                            Your crypto exposure is currently 12% above your "Balanced" target. We suggest rebalancing to lock in profits and reduce volatility.
+                        </p>
+                        <div className="flex gap-3">
+                            <button className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm smooth-transition">
+                                Execute Rebalance
+                            </button>
+                            <button className="text-slate-400 hover:text-white px-4 py-2 text-sm smooth-transition">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div className="w-48 h-24 flex items-end gap-1">
+                        {[40, 70, 45, 90, 65, 80].map((h, i) => (
+                            <motion.div 
+                                key={i}
+                                initial={{ height: 0 }}
+                                animate={{ height: `${h}%` }}
+                                className="flex-1 bg-indigo-500/40 rounded-t-sm"
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+
             <div className="glass-card p-6">
                 <h3 className="text-xl font-bold mb-6">Asset Allocation</h3>
                 <div className="flex flex-col gap-4">
