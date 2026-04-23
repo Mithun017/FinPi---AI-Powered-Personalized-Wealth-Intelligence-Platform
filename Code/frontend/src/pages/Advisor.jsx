@@ -96,7 +96,7 @@ const Advisor = () => {
         }}>
           <div>
             <h1 style={{ fontSize: '24px' }}>FinPi AI Advisor</h1>
-            <p style={{ color: 'var(--text-on-light-2)', fontSize: '14px' }}>Powered by Google Gemini 1.5 Pro</p>
+            <p style={{ color: 'var(--text-on-light-2)', fontSize: '14px' }}>Powered by Google Gemini 1.5 Flash</p>
           </div>
           <div style={{ display: 'flex', gap: '12px' }}>
             <span className="badge-positive" style={{ padding: '6px 12px' }}>Personalized</span>

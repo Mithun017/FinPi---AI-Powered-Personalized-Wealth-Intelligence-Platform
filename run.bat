@@ -2,41 +2,30 @@
 TITLE FinPi — AI-Powered Personalized Wealth Intelligence Platform
 color 03
 cd /d "%~dp0"
+
 echo ============================================================
 echo      FinPi π — AI Wealth Intelligence Platform
-echo      Starting up your personalized wealth journey...
+echo      Launching your personalized wealth journey...
 echo ============================================================
 
-echo [1/6] Checking Python...
-python --version || (echo Python not found! Please install Python 3.11+ && pause && exit)
-
-echo [2/6] Checking Node.js...
-node --version || (echo Node.js not found! Please install Node.js 18+ && pause && exit)
-
-echo [3/6] Installing Python dependencies...
-cd Code\backend
-pip install -r requirements.txt
-
-echo [4/6] Running database migrations...
-alembic upgrade head
-
-echo [5/6] Seeding demo data...
-python seed_data.py
-
-echo [6/6] Installing frontend dependencies...
-cd ..\frontend
-npm install
-
-echo ============================================================
-echo  Starting Backend  (FastAPI)  →  http://localhost:8000
-echo  Starting Frontend (React)    →  http://localhost:3000
-echo  API Docs (Swagger)           →  http://localhost:8000/docs
-echo  Demo Login: demo@finpi.ai  /  Demo@1234
-echo ============================================================
-
+:: Start Backend in a new window
+echo Starting Backend (FastAPI)...
 start "FinPi Backend" cmd /k "cd Code\backend && uvicorn app.main:app --reload --port 8000"
-timeout /t 3
+
+:: Start Frontend in a new window
+echo Starting Frontend (React)...
 start "FinPi Frontend" cmd /k "cd Code\frontend && npm start"
 
-echo Both servers are starting. Open http://localhost:3000 in your browser.
+:: Wait for a few seconds to let servers start
+timeout /t 5 /nobreak > nul
+
+:: Open Frontend in the browser
+echo Opening FinPi in your browser...
+start http://localhost:3000
+
+echo ============================================================
+echo  Backend: http://localhost:8000/docs
+echo  Frontend: http://localhost:3000
+echo ============================================================
+
 pause

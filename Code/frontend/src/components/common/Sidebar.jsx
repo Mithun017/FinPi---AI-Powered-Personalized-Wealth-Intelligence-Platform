@@ -17,7 +17,6 @@ const Sidebar = () => {
   const navItems = [
     { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
     { name: 'Portfolio', path: '/portfolio', icon: Briefcase },
-    { name: 'AI Advisor', path: '/advisor', icon: MessageSquare },
     { name: 'Goals', path: '/goals', icon: Target },
     { name: 'Market', path: '/market', icon: TrendingUp },
     { name: 'Alerts', path: '/alerts', icon: Bell },

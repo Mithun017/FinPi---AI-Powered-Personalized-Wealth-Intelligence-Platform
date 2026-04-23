@@ -8,6 +8,7 @@ import Advisor from './pages/Advisor';
 import Goals from './pages/Goals';
 import Market from './pages/Market';
 import Profile from './pages/Profile';
+import ChatWidget from './components/common/ChatWidget';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/market" element={<Market />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
+      <ChatWidget />
     </Router>
   );
 }
