@@ -1,0 +1,152 @@
+:root {
+  /* ── PRIMARY COLOR SYSTEM (Ocean Depth Palette) ── */
+  --primary:            #1E4D78;   /* Main brand blue */
+  --primary-dark:       #163A5C;
+  --primary-light:      #2A6399;
+  --primary-glow:       rgba(30, 77, 120, 0.25);
+
+  --secondary:          #4A8FA3;   /* Steel Teal */
+  --secondary-dark:     #37728A;
+  --secondary-light:    #5DA8BE;
+
+  --tertiary:           #8ECFCA;   /* Soft Mint */
+  --tertiary-dark:      #6AB8B2;
+  --tertiary-light:     #B2E0DC;
+
+  --neutral:            #F0F5E4;   /* Warm Cream */
+  --neutral-variant:    #E4EDD8;
+  --neutral-dark:       #D5E0C4;
+
+  --error:              #E8533A;   /* Coral Red */
+  --error-light:        rgba(232, 83, 58, 0.12);
+  --error-dark:         #C43F28;
+
+  /* ── SURFACE SYSTEM ── */
+  --surface-bg:         #F0F5E4;
+  --surface-card:       #FFFFFF;
+  --surface-elevated:   #FAFCF6;
+  --surface-deep:       #1E4D78;
+  --surface-deep-2:     #163A5C;
+
+  /* ── TEXT SYSTEM ── */
+  --text-on-light:      #1E4D78;
+  --text-on-light-2:    #4A8FA3;
+  --text-muted:         #7A9BAD;
+  --text-on-dark:       #F0F5E4;
+  --text-on-dark-2:     #8ECFCA;
+
+  /* ── CHART & DATA COLORS ── */
+  --chart-1:            #1E4D78;
+  --chart-2:            #4A8FA3;
+  --chart-3:            #8ECFCA;
+  --chart-4:            #E8533A;
+  --chart-5:            #F0A500;
+  --chart-6:            #2A6399;
+
+  /* ── COMPONENT TOKENS ── */
+  --border-light:       rgba(30, 77, 120, 0.12);
+  --border-dark:        rgba(240, 245, 228, 0.15);
+  --shadow-card:        0 4px 24px rgba(30, 77, 120, 0.10);
+  --shadow-elevated:    0 8px 40px rgba(30, 77, 120, 0.18);
+  --shadow-glow-primary: 0 0 32px rgba(30, 77, 120, 0.22);
+  --shadow-glow-teal:   0 0 32px rgba(74, 143, 163, 0.25);
+  --shadow-glow-mint:   0 0 24px rgba(142, 207, 202, 0.30);
+
+  /* ── GRADIENTS ── */
+  --gradient-hero:      linear-gradient(135deg, #1E4D78 0%, #163A5C 50%, #0F2A45 100%);
+  --gradient-card:      linear-gradient(135deg, #FFFFFF 0%, #FAFCF6 100%);
+  --gradient-teal:      linear-gradient(135deg, #4A8FA3 0%, #8ECFCA 100%);
+  --gradient-ocean:     linear-gradient(180deg, #1E4D78 0%, #4A8FA3 50%, #8ECFCA 100%);
+  --gradient-surface:   linear-gradient(180deg, #F0F5E4 0%, #E4EDD8 100%);
+  --gradient-positive:  linear-gradient(135deg, #8ECFCA 0%, #4A8FA3 100%);
+  --gradient-negative:  linear-gradient(135deg, #E8533A 0%, #C43F28 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--surface-bg);
+  color: var(--text-on-light);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.jetbrains-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.finpi-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  padding: 24px;
+}
+
+.finpi-card:hover {
+  box-shadow: var(--shadow-elevated);
+  transform: translateY(-3px);
+}
+
+.btn-primary {
+  background: var(--gradient-ocean);
+  color: var(--text-on-dark);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 28px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-glow-primary);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--gradient-teal);
+  box-shadow: var(--shadow-glow-teal);
+  transform: translateY(-2px);
+}
+
+.badge-positive {
+  background: rgba(142, 207, 202, 0.18);
+  color: var(--secondary);
+  border: 1px solid var(--tertiary);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.badge-negative {
+  background: var(--error-light);
+  color: var(--error);
+  border: 1px solid rgba(232, 83, 58, 0.3);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.glass-card {
+  background: rgba(240, 245, 228, 0.10);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(240, 245, 228, 0.20);
+  border-radius: 20px;
+  padding: 24px;
+}
