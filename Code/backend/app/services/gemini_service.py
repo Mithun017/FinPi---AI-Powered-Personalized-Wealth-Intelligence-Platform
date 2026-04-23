@@ -5,8 +5,8 @@ from ..core.config import settings
 class GeminiAdvisorService:
     def __init__(self):
         genai.configure(api_key=settings.GEMINI_API_KEY)
-        self.pro_model = genai.GenerativeModel('gemini-1.5-pro')
-        self.flash_model = genai.GenerativeModel('gemini-1.5-flash')
+        self.pro_model = genai.GenerativeModel('gemini-1.5-pro-latest')
+        self.flash_model = genai.GenerativeModel('gemini-1.5-flash-latest')
         # vision_model = genai.GenerativeModel('gemini-1.5-flash') # gemini-pro-vision is legacy, use flash or pro for multimodal
 
     async def _run_async(self, func, *args):
